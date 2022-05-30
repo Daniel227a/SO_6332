@@ -57,7 +57,7 @@ void fcfs_print_gantt_chart(Process *p, int len)
 
         printf("|");
     }
-
+    
     printf("\n\t ");
 
     for (i = 0; i < len; i++)

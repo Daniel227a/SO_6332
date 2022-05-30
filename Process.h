@@ -8,11 +8,11 @@
 typedef struct _process
 {
     char id[ID_LEN];
-    int arrive_time;
-    int waiting_time;
+    int arrive_time;//hora de chegada
+    int waiting_time;//tempo de espera
     int return_time;
-    int turnaround_time;
-    int response_time;
+    int turnaround_time;//delta  t
+    int response_time;//tempo de resposta
     int burst;
     int priority;
     int completed;
