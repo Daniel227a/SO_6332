@@ -18,10 +18,3 @@ void lerTxt(){
 
 }
 
-int lista_process(){
-
-
-
-
-
-}
