@@ -56,6 +56,7 @@ void main(){
         }
     process[i].turnaround_time=process[j].burst+process[j].arrive_time;
     process[i].return_time=time_cont;
+    process[i].completed=TRUE;
     time_cont=0;
     printf("\n");
     }
