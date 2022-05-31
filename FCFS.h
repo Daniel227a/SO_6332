@@ -66,9 +66,37 @@ void fcfs_print_gantt_chart(Process *p, int len)
 }
 
 
-void FCFS(Process *p, int len)
+void FCFS(Process *process, int process_count)
 {
-    printf("Implementar o FCFS");
+    
+    
+    merge_sort_by_arrive_time(process ,0,process_count - 1);
+    int time_cont;
+    time_cont=0;
+    int i=0;
+    int j=0;
+    int response_time_cont;
+    for(i=0;i<process_count;i++){
+        for(j=i;j>=0;j--){
+             time_cont=time_cont+process[j].burst;
+           //  time_cont=time_cont+process[j].arrive_time;
+            
+        }
+    process[i].turnaround_time=process[j].burst+process[j].arrive_time;
+    process[i].return_time=time_cont;
+    if(i!=0){
+        process[i].response_time=process[i-1].return_time-process[i].arrive_time;
+
+    }else{
+        process[i].response_time=0;
+
+    }
+    
+    process[i].completed=TRUE;
+    time_cont=0;
+    printf("\n");
+    }
+   
 }
 
 #endif

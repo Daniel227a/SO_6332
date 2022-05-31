@@ -1,4 +1,5 @@
 #include "CpuSchedulingAlgorithms.h"
+#include"FCFS.h"
 
 
 void main(){
@@ -34,7 +35,7 @@ void main(){
     }
     i=0;
   
-    
+    /*  
 
     for (i=0;i<process_count;i++){
 
@@ -45,33 +46,20 @@ void main(){
         printf("\n");
 
     }
-
-    int time_cont;
-    time_cont=0;
-    for(i=0;i<process_count;i++){
-        for(j=i;j>=0;j--){
-             time_cont=time_cont+process[j].burst;
-             time_cont=time_cont+process[j].arrive_time;
-            
-        }
-    process[i].turnaround_time=process[j].burst+process[j].arrive_time;
-    process[i].return_time=time_cont;
-    process[i].completed=TRUE;
-    time_cont=0;
-    printf("\n");
-    }
+    */
+    FCFS(process , process_count);
     
-    for (i=0;i<process_count;i++){
+    for(i=0;i<process_count;i++){
 
         printf(" id %s",process[i].id);
         printf(" tempo de espera (waiting_time): %d",process[i].arrive_time);
-        printf(" total gasto pelo processo para sua execução na CPU (brust): %d",process[i].burst);
+        printf(" (brust): %d",process[i].burst);
         printf(" priridade : %d",process[i].priority);
         printf(" return time : %d",process[i].return_time);
         printf(" turnoroud %d",process[i].return_time);
         printf("\n");
 
     }
-
-
+    fcfs_print_gantt_chart(process ,process_count);
+     print_table(process, process_count);
 }

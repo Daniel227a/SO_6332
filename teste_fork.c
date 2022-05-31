@@ -5,12 +5,12 @@
 int main(){
 printf("\nAAAAAAAAAAAa\n");
  pid_t x;
- //pid_t y;
+ pid_t y;
  x=fork();
- //y=fork();
- if(x!=0){
+ y=fork();
+ if(1){
       printf("\nfilho X %d",x);
-      //printf("\nfilho Y %d",y);
+      printf("\nfilho Y %d",y);
       printf("\npai X %d",getpid());
 
  }
