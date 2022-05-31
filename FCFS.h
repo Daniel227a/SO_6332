@@ -79,17 +79,19 @@ void FCFS(Process *process, int process_count)
     for(i=0;i<process_count;i++){
         for(j=i;j>=0;j--){
              time_cont=time_cont+process[j].burst;
-           //  time_cont=time_cont+process[j].arrive_time;
+             response_time_cont=response_time_cont+process[j].arrive_time;
             
         }
-    process[i].turnaround_time=process[j].burst+process[j].arrive_time;
+    
     process[i].return_time=time_cont;
     if(i!=0){
         process[i].response_time=process[i-1].return_time-process[i].arrive_time;
-
+        process[i].waiting_time=process[i-1].return_time-process[i].arrive_time;
+        process[i].turnaround_time=process[i].return_time-process[i].arrive_time;
     }else{
         process[i].response_time=0;
-
+         process[i].waiting_time=0;
+         process[i].turnaround_time=process[i].return_time-process[i].arrive_time;
     }
     
     process[i].completed=TRUE;
