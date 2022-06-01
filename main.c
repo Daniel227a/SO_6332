@@ -1,11 +1,20 @@
 #include "CpuSchedulingAlgorithms.h"
 #include"FCFS.h"
+#include<string.h>
+typedef struct Bilhete
+{
+    char id[255];
+    int inicio;
+    int fim;
+
+    /* data */
+}bilhete;
 
 
 void main(){
 
 
-        int process_count = 0;
+    int process_count = 0;
 
     int i = 0;
     int j;
@@ -47,6 +56,10 @@ void main(){
 
     }
     */
+
+   //FCFS FEITO
+   //===================================================================//
+   /*
     FCFS(process , process_count);
     
     for(i=0;i<process_count;i++){
@@ -62,4 +75,44 @@ void main(){
     }
     fcfs_print_gantt_chart(process ,process_count);
      print_table(process, process_count);
+
+     =============================================================
+
+     */
+    int cont_bilhetes=0;
+    bilhete *aloca_bilhete;
+    aloca_bilhete=(bilhete *) malloc(sizeof(bilhete) * process_count);
+
+    for(i =0;i<process_count;i++){
+
+        cont_bilhetes+=process[i].priority;
+
+    }
+    int vet_bilhete[cont_bilhetes];
+
+    for (int i = 0; i < process_count; i++)
+    {
+        
+        if(i!=0){
+            
+            strcpy(aloca_bilhete[i].id,process[i].id);
+            aloca_bilhete[i].inicio=aloca_bilhete[i-1].fim;
+            aloca_bilhete[i].fim=process[i].priority+aloca_bilhete[i].inicio;
+
+        }else{
+
+            strcpy(aloca_bilhete[i].id,process[i].id);
+            aloca_bilhete[i].inicio=0;
+            aloca_bilhete[i].fim=process[i].priority;
+        }   
+
+    }
+    for (i=0;i<process_count;i++){
+       printf("%s ",aloca_bilhete[i].id);
+       printf("%d ",aloca_bilhete[i].inicio);
+       printf("%d ",aloca_bilhete[i].fim);
+        printf("\n");
+    }
+
 }
+
