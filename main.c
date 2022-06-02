@@ -46,7 +46,7 @@ void main(){
         i++;
     }
     i=0;
-  
+    process_init(process,process_count);
     /*  
 
     for (i=0;i<process_count;i++){
@@ -119,11 +119,59 @@ void main(){
     
     for(i =0;i<cont_bilhetes;i++){
 
-      //  printf("\n%s",vet_bilhete[i].id);
+        vet_bilhete[i].completa=0;
+        printf("%s   ",vet_bilhete[i].id);
 
     }
      int premiado=0;
     int cont_process_completed=0;
+
+  srand((unsigned)time(NULL));
+            srand(time(NULL));
+  
+      for (int i = 0; i <process_count; i++)
+    {    
+            srand((unsigned)time(NULL));
+            srand(time(NULL));
+            premiado=(rand()%cont_bilhetes);
+       if(process[i].completed!=1 && (strcmp(vet_bilhete[premiado].id,process[i].id))){
+           srand((unsigned)time(NULL));
+            srand(time(NULL));
+           cont_process_completed+=1;
+           process[i].completed=1;
+           //printf("\n%d",premiado);
+           printf("\n o processo %s",process[i].id);
+           printf("\n");
+
+       }
+       
+         if(cont_process_completed ==process_count-1){
+           cont_process_completed+=1;
+
+           for (j=0;j<process_count;j++){
+
+               if( process[j].completed!=1){
+                     process[j].completed=1;
+                      printf("\n o processo %s",process[j].id);
+
+               }
+
+                
+           }
+          
+            break;
+       }else if(cont_process_completed!=6 && i== process_count-1){
+           i=0;
+           srand((unsigned)time(NULL));
+            srand(time(NULL));
+       }
+  
+
+     }
+
+
+
+/*
   
    for (int i = 0; i <process_count; i++)
    {
@@ -144,8 +192,15 @@ void main(){
 
    }
    
+*/
 
 
+for (int i=0;i<process_count;i++){
+
+
+    printf("\n o processo %s  esta %d ",process[i].id ,process[i].completed);
+}
+//printf("\n%d",process_count);
 
 /*   
     int premiado=0;
