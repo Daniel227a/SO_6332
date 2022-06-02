@@ -1,11 +1,14 @@
 #include "CpuSchedulingAlgorithms.h"
 #include"FCFS.h"
 #include<string.h>
+#include<time.h>
 typedef struct Bilhete
 {
     char id[255];
     int inicio;
     int fim;
+    int completa;
+
 
     /* data */
 }bilhete;
@@ -88,7 +91,7 @@ void main(){
         cont_bilhetes+=process[i].priority;
 
     }
-    int vet_bilhete[cont_bilhetes];
+    bilhete vet_bilhete[cont_bilhetes];
 
     for (int i = 0; i < process_count; i++)
     {
@@ -107,12 +110,84 @@ void main(){
         }   
 
     }
+    for(int i =0;i<process_count;i++){
+        for (int y= aloca_bilhete[i].inicio;y<=aloca_bilhete[i].fim;y++){
+
+             strcpy(vet_bilhete[y].id,aloca_bilhete[i].id);
+        }
+    }
+    
+    for(i =0;i<cont_bilhetes;i++){
+
+      //  printf("\n%s",vet_bilhete[i].id);
+
+    }
+     int premiado=0;
+    int cont_process_completed=0;
+  
+   for (int i = 0; i <process_count; i++)
+   {
+        srand((unsigned)time(NULL));
+        srand(time(NULL));
+       premiado=(rand()%cont_bilhetes);
+       if(process[i].completed!=1 && (strcmp(vet_bilhete[premiado].id,process[i].id))){
+
+           cont_process_completed+=1;
+           process[i].completed=1;
+           printf("%s ",process[i].id);
+
+       }else if(process[i].completed!=0){
+           i--;
+       }
+
+  
+
+   }
+   
+
+
+
+/*   
+    int premiado=0;
+  
+   srand((unsigned)time(NULL));
+    srand(time(NULL));
+ // premiado=(rand()%cont_bilhetes);
+    
+    for(i=0;i<process_count;i++){
+      premiado=(rand()%cont_bilhetes);
+       
+       
+        
+
+            if(vet_bilhete[premiado] && aloca_bilhete[i].completa!=1){
+
+                process[i].completed=TRUE;
+                aloca_bilhete[i].completa=1;
+               premiado=(rand()%cont_bilhetes);
+                printf("%s\n",process[i].id);
+                printf("\n%d premio",premiado);
+                break;
+            }else if(aloca_bilhete[i].completa==1){
+              i--;
+            // premiado=(rand()%cont_bilhetes);
+            }
+
+
+            
+
+
+    }
+
+
     for (i=0;i<process_count;i++){
        printf("%s ",aloca_bilhete[i].id);
        printf("%d ",aloca_bilhete[i].inicio);
        printf("%d ",aloca_bilhete[i].fim);
         printf("\n");
     }
+
+*/
 
 }
 
