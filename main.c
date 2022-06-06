@@ -3,6 +3,21 @@
 #include<string.h>
 #include<time.h>
 #include"Lotery.h"
+int Cont_process_completed(int process_cont,Process *process){
+    int i;
+    int temp_prrocess_completed;
+    for(i=0;i<process_cont;i++){
+
+        if(process[i].completed!=1){
+
+            temp_prrocess_completed=1;
+        }
+
+
+    }
+return temp_prrocess_completed;
+
+}
 
 void main(){
 
@@ -37,6 +52,8 @@ void main(){
     }
     i=0;
     process_init(process,process_count);
+   
+
     /*  
 
     for (i=0;i<process_count;i++){
@@ -72,8 +89,36 @@ void main(){
      =============================================================
 
      */
+   // ===============================================================
+   // Lotery(process, process_count);
+int temp2;
 
-    Lotery(process, process_count);
+    temp2=Cont_process_completed(process_count,process);
+    printf("%d",temp2);
+    int quantun=6;
+	int *remain_burst_time = (int *)malloc(sizeof(int) * process_count);
+    int ramain_process_cont=process_count;
+	for (i = 0; i < process_count; i++)
+	{
+		remain_burst_time[i] = process[i].burst;
+
+
+	}
+    while (Cont_process_completed(process_count,process)!=0)
+    {
+       process[ramain_process_cont-1].burst -=quantum;
+        if(process[ramain_process_cont-1].burst>0){
+
+
+        }else{
+
+
+            remain_burst_time--;
+
+        }
+
+    }
+    
     
 }
 
