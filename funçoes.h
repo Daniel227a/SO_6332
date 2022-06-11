@@ -18,23 +18,33 @@ void lerTxt(){
 
 }
 
-void arrive_time_sort(Process *process,int i, int process_count){
+int arrive_time_sort(Process *process,int i, int process_count,Process *temp){
+//recebe i == index do prcesso que esta na cpu
+//temp = vet do tipo process 
+//gera um novo temp ordenado com os arrive time <que o bruts do prrocesso atual 
 
-    int cont=0;
-    int i,j;
+   // printf("AAAAAAAAAAaaa");
+    int j;
+    int cont;
+    cont=0;
     Process temp_process;
-    temp=(Process *) malloc(sizeof(Process) * process_count);
-    for(j=i+1;j<process_cont;j++){
-        if((process[i].burst+process[i].arrive_time)>process[j].arrive_time){
-
-            temp[cont]=process[j].arrive_time;
+    for(j=i+1;j<process_count-1;j++){
+        if((process[i].burst+process[i].arrive_time)>process[j].arrive_time &&process[i].completed!=1){
+            
+            temp[cont]=process[j];
+           
             cont++;
         }
 
     }
-    for(i=0;i<cont-1;i++){
-        for(j=i+1;j<cont;j++){
-            if(process[i]>process[j]){
+    
+    int len_vet=cont;
+    cont=0;
+    
+    printf("----\n");
+    for(i=0;i<len_vet-1;i++){
+        for(j=i+1;j<len_vet;j++){
+            if((temp[i].arrive_time)>(temp[j].arrive_time )){
                 temp_process=temp[i];
                 temp[i]=temp[j];
                 temp[j]=temp_process;
@@ -42,10 +52,14 @@ void arrive_time_sort(Process *process,int i, int process_count){
             }
           
         }
-
+    
 
     }
+    for (i=0;i<len_vet;i++){
+         printf("%d",temp[i].arrive_time);
 
+    }
+    return cont;
 
 
 

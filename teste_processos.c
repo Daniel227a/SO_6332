@@ -3,32 +3,8 @@
 #define ID_LEN 20
 #define TRUE 1
 #define FALSE 0
-
-
-typedef struct _process
-{
-    char id[ID_LEN];
-    int arrive_time;//hora de chegada
-    int waiting_time;//tempo de espera
-    int return_time;
-    int turnaround_time;
-    int response_time;//tempo de resposta
-    int burst;
-    int priority;
-    int completed;
-} Process;
-typedef int Quantum;
-void process_init(Process p[], int len)
-{
-    int i;
-    for (i = 0; i < len; i++)
-    {
-        p[i].waiting_time = 0;
-        p[i].return_time = 0;
-        p[i].response_time = 0;
-        p[i].completed = FALSE;
-    }
-}
+#include "funçoes.h"
+#include"Process.h"
 
 void fcfs_print_gantt_chart(Process *p, int len)
 {
@@ -88,15 +64,50 @@ void fcfs_print_gantt_chart(Process *p, int len)
     printf("\n");
 }
 void main(){
-    Process *process;
 
-    process = (Process *) malloc(sizeof(Process) * 5);
-    process_init( process , 5);
-    int i=0;
+    int process_count = 0;
+
+    int i = 0;
+    int j;
+
+
+    Quantum quantum;
+
+    Process *process;
+    Process *temp;
+    FILE *fp = fopen("process.txt", "r");
+
+
+    if (fp == NULL) {
+        printf("FILE OPEN ERROR! - Verificar Arquivo do Entrada\n");
+       exit(1);
+    }
+
+    fscanf(fp, " %d", &process_count);
+
+    process = (Process *) malloc(sizeof(Process) * process_count);
+    temp=(Process *) malloc(sizeof(Process) * process_count);
+    while (i < process_count) {
+        fscanf(fp, "%s %d %d %d",process[i].id, &process[i].arrive_time, &process[i].burst, &process[i].priority);
+      //  fscanf(fp, "%s %d %d %d",temp[i].id, &temp[i].arrive_time, &temp[i].burst, &temp[i].priority)
+        i++;
+    }
+    i=0;
+    int cont =0;
+    
+    process_init( process , process_count);
+    process_init( temp, process_count);
+    
     for(i=0;i<5;i++){
-        printf("\n %d",process[i].completed);
+        //printf("arrive  %d\n",process[i].arrive_time);
+       cont= arrive_time_sort(process,i,process_count,temp);
+      // printf("%d",cont);
+        //for (j=0;j<cont;j++){
+          //  printf(" arrive do temp %d ",temp[j].arrive_time);
+
+      //  }
 
     }
 
-    fcfs_print_gantt_chart(process,5);
+    
 }

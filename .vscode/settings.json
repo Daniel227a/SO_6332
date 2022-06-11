@@ -2,6 +2,7 @@
     "files.associations": {
         "types.h": "c",
         "rr.h": "c",
-        "pps.h": "c"
+        "pps.h": "c",
+        "funçoes.h": "c"
     }
 }
