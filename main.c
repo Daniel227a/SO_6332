@@ -2,56 +2,59 @@
 #include"FCFS.h"
 #include<string.h>
 #include<time.h>
-#include"Lotery.h"
+//#include"Lotery.h"
+#include"RR.h"
 int Cont_process_completed(int process_cont,Process *process){
     int i;
-    int temp_prrocess_completed;
+    int temp_prrocess_completed=0;
     for(i=0;i<process_cont;i++){
 
-        if(process[i].completed!=1){
+        if(process[i].completed==1){
 
-            temp_prrocess_completed=1;
+            
+            temp_prrocess_completed++;
         }
 
 
     }
+    //printf("%d",temp_prrocess_completed);
 return temp_prrocess_completed;
+
 
 }
 
 void main(){
 
 
-    int process_count = 0;
+     int process_count = 0;
 
     int i = 0;
-    int j;
 
 
     Quantum quantum;
 
     Process *process;
-    Process *temp;
+
     FILE *fp = fopen("process.txt", "r");
 
 
     if (fp == NULL) {
         printf("FILE OPEN ERROR! - Verificar Arquivo do Entrada\n");
-       exit(1);
+      
     }
 
     fscanf(fp, " %d", &process_count);
 
     process = (Process *) malloc(sizeof(Process) * process_count);
-    temp=(Process *) malloc(sizeof(Process) * process_count);
+
+
     while (i < process_count) {
         fscanf(fp, "%s %d %d %d",
                process[i].id, &process[i].arrive_time, &process[i].burst, &process[i].priority);
 
         i++;
+
     }
-    i=0;
-    process_init(process,process_count);
    
 
     /*  
@@ -90,35 +93,35 @@ void main(){
 
      */
    // ===============================================================
-   // Lotery(process, process_count);
-int temp2;
+    // Lotery(process, process_count);
+ 
 
-    temp2=Cont_process_completed(process_count,process);
-    printf("%d",temp2);
-    int quantun=6;
-	int *remain_burst_time = (int *)malloc(sizeof(int) * process_count);
-    int ramain_process_cont=process_count;
-	for (i = 0; i < process_count; i++)
-	{
-		remain_burst_time[i] = process[i].burst;
+ 
 
-
-	}
-    while (Cont_process_completed(process_count,process)!=0)
-    {
-       process[ramain_process_cont-1].burst -=quantum;
-        if(process[ramain_process_cont-1].burst>0){
+    process_init(process,process_count);
+    
+     merge_sort_by_arrive_time(process,0,process_count);  
+     rr_calculate_waiting_time(process,0,process_count);
+     rr_calculate_turnaround_time(process,process_count);
+    
 
 
-        }else{
+    
+    
 
+          
+    for(i=0;i<process_count;i++){
+    process[i].return_time=process[i].return_time+process[i].waiting_time+process[i].burst;
 
-            remain_burst_time--;
-
-        }
 
     }
+     rr_calculate_response_time(process,process_count);
+    printf("\tRR\n\n");
+    //rr_print_gantt_chart(process,process_count,quantum);
+    print_table(process,process_count);
+
     
+
+   
     
 }
-

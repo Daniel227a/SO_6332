@@ -88,8 +88,18 @@ void rr_calculate_turnaround_time(Process *p, int len)
 
 
 
-	for (i = 0; i < len; i++)
-		p[i].turnaround_time = p[i].burst + p[i].waiting_time - p[i].arrive_time;
+	for (i = 0; i < len; i++){
+	p[i].turnaround_time = p[i].burst +( p[i].waiting_time - p[i].arrive_time);
+	
+	if(p[i].turnaround_time <0){
+
+		p[i].turnaround_time =p[i].turnaround_time*-1 ;
+	}
+
+	}
+		
+
+
 
 }
 
@@ -350,7 +360,54 @@ void rr_print_gantt_chart(Process *p, int len, Quantum q)
 	free(remain_burst_time);
 
 }
+void rr_calculate_response_time(Process *process,int process_count){
+   int temp2=0;
+    int inicio=0;
+	int quantum;
+	int i;
+   // temp2=Cont_process_completed(process_count,process);
+    //printf("%d",temp2);
+     quantum=6;
+	for(i=0;i<process_count;i++){
+    process[i].response_time=0;
 
+
+    }
+    inicio=0;    
+    while (inicio<process_count)
+	{
+	
+	  
+        if(inicio == 0){
+      
+            process[inicio].response_time=process[inicio].arrive_time;
+
+
+            
+        }else{
+
+            if(process[inicio-1].burst >=quantum){
+               
+  
+                process[inicio].response_time=(process[inicio-1].response_time+quantum);
+              
+            }else{
+                
+                 process[inicio].response_time=process[inicio-1].response_time+process[inicio-1].burst;
+               
+            }
+
+        }
+    if(process[inicio].response_time<0){
+
+		process[inicio].response_time=process[inicio].response_time*-1;
+	}
+inicio++;
+    }
+
+
+	
+}
 
 void RR(Process *p, int len, Quantum quantum) {
     printf("Round-Robin: Implememtar e devolver no final, o tempo de espera, tempo de retorno e o tempo de resposta");

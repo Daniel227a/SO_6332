@@ -22,7 +22,7 @@ int arrive_time_sort(Process *process,int i, int process_count,Process *temp){
 //recebe i == index do prcesso que esta na cpu
 //temp = vet do tipo process 
 //gera um novo temp ordenado com os arrive time <que o bruts do prrocesso atual 
-
+//retorna o tamnho do vet com todos os arrive time <que o bruts do prrocesso atual 
    // printf("AAAAAAAAAAaaa");
     int j;
     int cont;
@@ -41,7 +41,7 @@ int arrive_time_sort(Process *process,int i, int process_count,Process *temp){
     int len_vet=cont;
     cont=0;
     
-    printf("----\n");
+    //printf("----\n");
     for(i=0;i<len_vet-1;i++){
         for(j=i+1;j<len_vet;j++){
             if((temp[i].arrive_time)>(temp[j].arrive_time )){

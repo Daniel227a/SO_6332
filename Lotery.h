@@ -23,7 +23,7 @@ void lotery_print_gantt_chart(Process *p, int len) {
 
 void Lotery(Process *process, int process_count) {
        
-
+    
     int i = 0;
     int j;
     int cont_bilhetes=0;
@@ -66,7 +66,7 @@ void Lotery(Process *process, int process_count) {
     for(i =0;i<cont_bilhetes;i++){
 
         vet_bilhete[i].completa=0;
-        printf("%s   ",vet_bilhete[i].id);
+      //  printf("%s   ",vet_bilhete[i].id);
 
     }
      int premiado=0;
@@ -87,7 +87,7 @@ void Lotery(Process *process, int process_count) {
             cont_process_completed+=1;
             process[i].completed=1;
             //printf("\n%d",premiado);
-            printf("\n o processo %s",process[i].id);
+            //printf("\n o processo %s",process[i].id);
             printf("\n");
 
         }
@@ -98,7 +98,7 @@ void Lotery(Process *process, int process_count) {
 
                 if( process[j].completed!=1){
                         process[j].completed=1;
-                        printf("\n o processo %s",process[j].id);
+                        //printf("\n o processo %s",process[j].id);
                         temp[cont_process_completed]=process[j];
                         cont_process_completed+=1;
                         break;
