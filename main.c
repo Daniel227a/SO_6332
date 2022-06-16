@@ -4,6 +4,8 @@
 #include<time.h>
 //#include"Lotery.h"
 #include"RR.h"
+#include"funçoes.h"
+#include"SJF.h"
 int Cont_process_completed(int process_cont,Process *process){
     int i;
     int temp_prrocess_completed=0;
@@ -26,7 +28,7 @@ return temp_prrocess_completed;
 void main(){
 
 
-     int process_count = 0;
+    int process_count = 0;
 
     int i = 0;
 
@@ -40,7 +42,7 @@ void main(){
 
     if (fp == NULL) {
         printf("FILE OPEN ERROR! - Verificar Arquivo do Entrada\n");
-      
+       // return 0;
     }
 
     fscanf(fp, " %d", &process_count);
@@ -55,7 +57,9 @@ void main(){
         i++;
 
     }
-   
+
+    fscanf(fp, " %d", &quantum);
+
 
     /*  
 
@@ -94,13 +98,21 @@ void main(){
      */
    // ===============================================================
     // Lotery(process, process_count);
- quantum=3;
+ //quantum=3;
+//===========================
+//RR(process,  process_count, quantum);
 
-RR(process,  process_count, quantum);
+  
+  /*
+    i=0;
+    int k;
+    k=bruts_time_sort(process,i, process_count,temp);
 
+   for (i=0;i<process_count;i++){
+       k=bruts_time_sort(process,i, process_count,temp);
+        
+   }
+  */  
 
-    
-
-   
-    
+ SJF(process, process_count);
 }

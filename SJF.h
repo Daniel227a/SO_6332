@@ -136,8 +136,32 @@ void sjf_print_gantt_chart(Process *p, int len)
 }
 
 
-void SJF(Process *p, int len){
-    printf("SJF - Implememtar e devolver no final, o tempo de espera, tempo de retorno e o tempo de resposta");
+void SJF(Process *process, int process_count){
+		int i;
+	 int j;
+ process_init(process,process_count);
+ merge_sort_by_arrive_time(process,0,process_count);
+ Process temp_process;
+    for(i=0;i<process_count-1;i++){
+        for(j=i+1;j<process_count;j++){
+            if((process[i].arrive_time)==(process[j].arrive_time )&&(process[i].burst)>(process[j].burst)){
+                temp_process=process[i];
+                process[i]=process[j];
+                process[j]=temp_process;
+
+            }
+          
+        }
+
+    }
+       // for (i=0;i<process_count;i++){
+        // printf("%d\n",process[i].burst);
+
+   // }
+    sjf_calculate_time(process,process_count);
+    sjf_print_gantt_chart(process,process_count);
+    print_table(process, process_count);
+    //printf("SJF - Implememtar e devolver no final, o tempo de espera, tempo de retorno e o tempo de resposta");
 
 }
 
