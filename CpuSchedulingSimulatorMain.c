@@ -36,6 +36,7 @@ int main() {
 
     //Chamada da Função que simula a execução do FCFS
     puts("┏                                                                                                                             ┓\n\n");
+    printf("%s"," \tFCFS");
     FCFS(process, process_count);
     fcfs_print_gantt_chart(process ,process_count);
     turnaround_time_total_times(process ,process_count);
@@ -45,6 +46,7 @@ int main() {
     
     //Chamada da Função que simula a execução do SJF
     puts("┏                                                                                                                             ┓\n\n");
+    printf("%s"," \n\tSJF\n");
     SJF(process, process_count);
     sjf_print_gantt_chart(process,process_count);
     turnaround_time_total_times(process ,process_count);
@@ -55,7 +57,7 @@ int main() {
     //Chamada da Função que Simula a execução do Round-Robin
     puts("┏                                                                                                                             ┓\n\n");
         quantum=3;
-
+        //printf("%s"," \tRR");
         RR(process,  process_count, quantum);
         rr_print_gantt_chart(process,process_count,quantum);
         turnaround_time_total_times(process ,process_count);
@@ -66,6 +68,7 @@ int main() {
 
     
     puts("┏                                                                                                                             ┓\n\n");
+    printf("%s"," \tLOTERY");
     process_init(process, process_count);
     Lotery(process, process_count);
     rr_print_gantt_chart(process,process_count,quantum);
@@ -75,6 +78,7 @@ int main() {
 
    
     puts("┏                                                                                                                             ┓\n\n");
+    printf("%s"," \n\tSRT\n");
     SRT(process, process_count);
     rr_print_gantt_chart(process,process_count,quantum);
     turnaround_time_total_times(process ,process_count);
@@ -82,6 +86,7 @@ int main() {
     puts("┗                                                                                                                             ┛\n\n");
  
     puts("┏                                                                                                                             ┓\n\n");
+    printf("%s"," \tPPS");
     PPS(process, process_count);
     puts("┗                                                                                                                             ┛\n\n");
 
