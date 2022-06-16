@@ -64,6 +64,23 @@ int arrive_time_sort(Process *process,int i, int process_count,Process *temp){
 
 int bruts_time_sort(Process *process,int i, int process_count,Process *temp){
 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     int j;
     int cont;

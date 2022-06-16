@@ -59,5 +59,27 @@ void merge_sort_by_arrive_time(Process arr[], int left, int right)
         merge(arr, left, mid, right);
     }
 }
+void turnaround_time_total_times(Process *p,int len){
+    int i;
+    int total_waiting_time = 0;
+    int total_turnaround_time = 0;
+    int total_response_time = 0;
+    for (i = 0; i < len; i++)
+        {
+            p[i].turnaround_time = p[i].return_time - p[i].arrive_time;
+            total_waiting_time += p[i].waiting_time;
+            total_turnaround_time += p[i].turnaround_time;
+            total_response_time += p[i].response_time;
+        }
+
+    printf(" \n\n");
+
+    
+    printf("\n\tAverage Waiting Time     : %-2.2lf\n", (double)total_waiting_time / (double)len);
+    printf("\tAverage Turnaround Time  : %-2.2lf\n", (double)total_turnaround_time / (double)len);
+    printf("\tAverage Response Time    : %-2.2lf\n\n", (double)total_response_time / (double)len);
+
+
+}
 
 #endif

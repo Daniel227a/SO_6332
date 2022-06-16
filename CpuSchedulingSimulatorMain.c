@@ -37,9 +37,12 @@ int main() {
     //Chamada da Função que simula a execução do FCFS
     puts("┏                                                                                                                             ┓\n\n");
     FCFS(process, process_count);
+    fcfs_print_gantt_chart(process ,process_count);
+    turnaround_time_total_times(process ,process_count);
+    print_table(process, process_count);
     puts("┗                                                                                                                             ┛\n\n");
 
-
+    /*
     //Chamada da Função que simula a execução do SJF
     puts("┏                                                                                                                             ┓\n\n");
     SJF(process, process_count);
@@ -75,7 +78,7 @@ int main() {
 
     system("pause");
 
-
+    */
     return 0;
 
 }

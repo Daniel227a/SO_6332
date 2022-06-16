@@ -160,7 +160,7 @@ for (int i=0;i<process_count;i++){
         printf("\n");
     }
    
-     fcfs_print_gantt_chart(temp ,process_count);
+    // fcfs_print_gantt_chart(temp ,process_count);
      print_table(temp, process_count);
     /* for(i=0;i<process_count;i++){
 
