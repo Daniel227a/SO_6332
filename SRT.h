@@ -356,9 +356,21 @@ void srt_print_gantt_chart(Process *p, int len)
     free(count);
     free(remain_burst_time);
 }
-void SRT(Process *p, int len)
+void SRT(Process *process, int process_count)
 {
-    printf("SRTN - Implememtar e devolver no final, o tempo de espera, tempo de retorno e o tempo de resposta");
+    int i;
+    process_init( process, process_count);
+    srt_calculate_time(process, process_count);
+
+    for(i=0;i<process_count;i++){
+
+        process[i].turnaround_time=process[i].return_time-process[i].arrive_time;
+    }
+    srt_print_gantt_chart(process, process_count);
+    print_table(process, process_count);
+
+
+
 }
 
 #endif

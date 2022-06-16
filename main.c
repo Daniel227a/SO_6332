@@ -6,6 +6,7 @@
 #include"RR.h"
 #include"funçoes.h"
 #include"SJF.h"
+#include"SRT.h"
 int Cont_process_completed(int process_cont,Process *process){
     int i;
     int temp_prrocess_completed=0;
@@ -113,6 +114,8 @@ void main(){
         
    }
   */  
-
- SJF(process, process_count);
+//========================
+ //SJF(process, process_count);
+  SRT(process,process_count)  ;
+ 
 }
