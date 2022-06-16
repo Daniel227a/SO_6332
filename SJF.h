@@ -141,6 +141,7 @@ void SJF(Process *process, int process_count){
 	 int j;
  process_init(process,process_count);
  merge_sort_by_arrive_time(process,0,process_count);
+
  Process temp_process;
     for(i=0;i<process_count-1;i++){
         for(j=i+1;j<process_count;j++){
@@ -159,8 +160,10 @@ void SJF(Process *process, int process_count){
 
    // }
     sjf_calculate_time(process,process_count);
-    sjf_print_gantt_chart(process,process_count);
-    print_table(process, process_count);
+	 for(i=0;i<process_count;i++){
+	 process[i].response_time=process[i].waiting_time;
+ }
+    
     //printf("SJF - Implememtar e devolver no final, o tempo de espera, tempo de retorno e o tempo de resposta");
 
 }

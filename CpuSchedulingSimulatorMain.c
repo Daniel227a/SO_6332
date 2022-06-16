@@ -42,13 +42,16 @@ int main() {
     print_table(process, process_count);
     puts("┗                                                                                                                             ┛\n\n");
 
-    /*
+    
     //Chamada da Função que simula a execução do SJF
     puts("┏                                                                                                                             ┓\n\n");
     SJF(process, process_count);
+    sjf_print_gantt_chart(process,process_count);
+    turnaround_time_total_times(process ,process_count);
+    print_table(process, process_count);
     puts("┗                                                                                                                             ┛\n\n");
 
-
+    /*
     //Chamada da Função que Simula a execução do Round-Robin
     puts("┏                                                                                                                             ┓\n\n");
     RR(process, process_count, quantum);
