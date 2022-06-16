@@ -94,31 +94,10 @@ void main(){
      */
    // ===============================================================
     // Lotery(process, process_count);
- 
+ quantum=3;
 
- 
+RR(process,  process_count, quantum);
 
-    process_init(process,process_count);
-    
-     merge_sort_by_arrive_time(process,0,process_count);  
-     rr_calculate_waiting_time(process,0,process_count);
-     rr_calculate_turnaround_time(process,process_count);
-    
-
-
-    
-    
-
-          
-    for(i=0;i<process_count;i++){
-    process[i].return_time=process[i].return_time+process[i].waiting_time+process[i].burst;
-
-
-    }
-     rr_calculate_response_time(process,process_count);
-    printf("\tRR\n\n");
-    //rr_print_gantt_chart(process,process_count,quantum);
-    print_table(process,process_count);
 
     
 

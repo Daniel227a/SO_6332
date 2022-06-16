@@ -360,10 +360,10 @@ void rr_print_gantt_chart(Process *p, int len, Quantum q)
 	free(remain_burst_time);
 
 }
-void rr_calculate_response_time(Process *process,int process_count){
+void rr_calculate_response_time(Process *process,int process_count,int quantum){
    int temp2=0;
     int inicio=0;
-	int quantum;
+	
 	int i;
    // temp2=Cont_process_completed(process_count,process);
     //printf("%d",temp2);
@@ -409,8 +409,27 @@ inicio++;
 	
 }
 
-void RR(Process *p, int len, Quantum quantum) {
-    printf("Round-Robin: Implememtar e devolver no final, o tempo de espera, tempo de retorno e o tempo de resposta");
+void RR(Process *process, int process_count, Quantum quantum) {
+	int i = 0;
+	 process_init(process,process_count);
+    
+     merge_sort_by_arrive_time(process,0,process_count);  
+     rr_calculate_waiting_time(process,0,process_count);
+     rr_calculate_turnaround_time(process,process_count);
+    
+
+    for(i=0;i<process_count;i++){
+    process[i].return_time=process[i].return_time+process[i].waiting_time+process[i].burst;
+
+
+    }
+     rr_calculate_response_time(process,process_count,quantum);
+    printf("\tRR\n\n");
+    //rr_print_gantt_chart(process,process_count,quantum);
+    print_table(process,process_count);
+
+
+    
 }
 
 #endif
