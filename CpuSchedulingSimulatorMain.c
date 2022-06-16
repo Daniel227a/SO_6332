@@ -66,17 +66,21 @@ int main() {
 
     
     puts("┏                                                                                                                             ┓\n\n");
+    process_init(process, process_count);
     Lotery(process, process_count);
     rr_print_gantt_chart(process,process_count,quantum);
     turnaround_time_total_times(process ,process_count);
     print_table(process,process_count);
     puts("┗                                                                                                                             ┛\n\n");
 
-    /*
+   
     puts("┏                                                                                                                             ┓\n\n");
     SRT(process, process_count);
+    rr_print_gantt_chart(process,process_count,quantum);
+    turnaround_time_total_times(process ,process_count);
+    print_table(process,process_count);
     puts("┗                                                                                                                             ┛\n\n");
-
+ 
     puts("┏                                                                                                                             ┓\n\n");
     PPS(process, process_count);
     puts("┗                                                                                                                             ┛\n\n");
@@ -91,7 +95,7 @@ int main() {
 
     system("pause");
 
-    */
+    
     return 0;
 
 }

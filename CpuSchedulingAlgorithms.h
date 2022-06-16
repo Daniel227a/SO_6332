@@ -7,6 +7,8 @@
 #include"SJF.h"
 #include"RR.h"
 #include"Lotery.h"
+#include"SRT.h"
+#include"PPS.h"
 
 
 #endif

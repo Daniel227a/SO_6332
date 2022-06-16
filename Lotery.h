@@ -88,7 +88,7 @@ void Lotery(Process *process, int process_count) {
     Process *temp;
     aloca_bilhete=(bilhete *) malloc(sizeof(bilhete) * process_count);
     temp=(Process *) malloc(sizeof(Process) * process_count);
-
+    
     for(i =0;i<process_count;i++){
 
         cont_bilhetes+=process[i].priority;

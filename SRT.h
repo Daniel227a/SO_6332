@@ -366,8 +366,8 @@ void SRT(Process *process, int process_count)
 
         process[i].turnaround_time=process[i].return_time-process[i].arrive_time;
     }
-    srt_print_gantt_chart(process, process_count);
-    print_table(process, process_count);
+   // srt_print_gantt_chart(process, process_count);
+    //print_table(process, process_count);
 
 
 
