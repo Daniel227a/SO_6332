@@ -5,6 +5,7 @@
 #include "Process.h"
 #include"FCFS.h"
 #include"SJF.h"
+#include"RR.h"
 
 
 #endif

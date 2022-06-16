@@ -51,13 +51,20 @@ int main() {
     print_table(process, process_count);
     puts("┗                                                                                                                             ┛\n\n");
 
-    /*
+    
     //Chamada da Função que Simula a execução do Round-Robin
     puts("┏                                                                                                                             ┓\n\n");
-    RR(process, process_count, quantum);
+        quantum=3;
+
+        RR(process,  process_count, quantum);
+        rr_print_gantt_chart(process,process_count,quantum);
+        turnaround_time_total_times(process ,process_count);
+        print_table(process,process_count);
+
+
     puts("┗                                                                                                                             ┛\n\n");
 
-
+    /*
     puts("┏                                                                                                                             ┓\n\n");
     Lotery(process, process_count);
     puts("┗                                                                                                                             ┛\n\n");

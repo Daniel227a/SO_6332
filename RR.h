@@ -426,7 +426,7 @@ void RR(Process *process, int process_count, Quantum quantum) {
      rr_calculate_response_time(process,process_count,quantum);
     printf("\tRR\n\n");
     //rr_print_gantt_chart(process,process_count,quantum);
-    print_table(process,process_count);
+    //print_table(process,process_count);
 
 
     
