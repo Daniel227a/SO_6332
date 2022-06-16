@@ -18,7 +18,64 @@ typedef struct Bilhete
 
 
 void lotery_print_gantt_chart(Process *p, int len) {
-    //trabalhar na implementacao aqui
+	int i, j;
+
+
+	printf("\t ");
+
+
+	for (i = 0; i < len; i++)
+	{
+		for (j = 0; j < p[i].burst; j++)
+			printf("--");
+
+		printf(" ");
+	}
+
+	printf("\n\t|");
+
+
+	for (i = 0; i < len; i++)
+	{
+		for (j = 0; j < p[i].burst - 1; j++)
+			printf(" ");
+
+		printf("%s", p[i].id);
+
+		for (j = 0; j < p[i].burst - 1; j++)
+			printf(" ");
+
+		printf("|");
+	}
+
+	printf("\n\t ");
+
+
+	for (i = 0; i < len; i++)
+	{
+		for (j = 0; j < p[i].burst; j++)
+			printf("--");
+
+		printf(" ");
+	}
+
+	printf("\n\t");
+
+	printf("0");
+
+
+	for (i = 0; i < len; i++)
+	{
+		for (j = 0; j < p[i].burst; j++)
+			printf("  ");
+
+		if (p[i].turnaround_time > 9)
+			printf("\b");
+
+		printf("%d", p[i].return_time);
+	}
+
+	printf("\n");
 }
 
 void Lotery(Process *process, int process_count) {
@@ -129,7 +186,7 @@ for (int i=0;i<process_count;i++){
     process[i].completed=0;
 
     }
-    //merge_sort_by_arrive_time(process ,0,process_count - 1);
+    merge_sort_by_arrive_time(process ,0,process_count );
     int time_cont;
     time_cont=0;
     i=0;
@@ -157,11 +214,11 @@ for (int i=0;i<process_count;i++){
         
         temp[i].completed=TRUE;
         time_cont=0;
-        printf("\n");
+        //printf("\n");
     }
    
     // fcfs_print_gantt_chart(temp ,process_count);
-     print_table(temp, process_count);
+    // print_table(temp, process_count);
     /* for(i=0;i<process_count;i++){
 
          printf(" id %s",temp[i].id);

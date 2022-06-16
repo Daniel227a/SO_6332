@@ -6,6 +6,7 @@
 #include"FCFS.h"
 #include"SJF.h"
 #include"RR.h"
+#include"Lotery.h"
 
 
 #endif
